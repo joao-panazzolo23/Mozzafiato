@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mozzafiato</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Mozzafiato.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #000000 !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem !important;
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+            .nav-link:hover {
+                color: #FF0000 !important;
+            }
+
+        .form-control {
+            border-radius: 20px;
+            border: 1px solid #000000;
+            box-shadow: none;
+        }
+
+            .form-control:focus {
+                box-shadow: none !important;
+                border-color: black !important;
+            }
+
+        .footer {
+            background-color: #f8f9fa;
+            color: #6c1d1c !important;
+            padding: 1rem;
+        }
+
+            .footer a {
+                color: #6c1d1c !important;
+            }
+
+                .footer a:hover {
+                    color: #4a0f0d !important;
+                }
+
+        .btn-primary-custom {
+            background-color: none !important;
+            border-color: #007bff !important;
+        }
+
+            .btn-primary-custom:hover {
+                background-color: none !important;
+                border-color: #004085 !important;
+            }
+
+        .btn-secondary-custom {
+            background-color: none !important;
+            border-color: #6c1d1c !important;
+            color: #ffffff !important;
+        }
+
+            .btn-secondary-custom:hover {
+                background-color: none !important;
+                border-color: #4a0f0d !important;
+            }
+
+        .btn-danger-custom {
+            background-color: #808080;
+            border-color: #dc3545 !important;
+            color: #ffffff;
+        }
+
+            .btn-danger-custom:hover {
+                background-color: none !important;
+                border-color: #bd2130 !important;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark border-dark border-bottom">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    Admin Area
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                @await Component.InvokeAsync("CategoriaMenu")
+
+                <div class="navbar-collapse collapse d-md-inline-flex flex-md-row-reverse">
+                    @await Component.InvokeAsync("CarrinhoCompraResumo")
+                    @* login do admin eh admininastro (SEM I NO ADM) senha eh senha123 *@
+
+                    <a class="nav-link" asp-area="Admin" asp-controller="AdminLanches" asp-action="Index">Produtos</a>
+                    <a class="nav-link" asp-area="Admin" asp-controller="AdminCategorias" asp-action="Index">Categorias</a>
+                    <a class="nav-link" asp-area="Admin" asp-controller="AdminPedidos" asp-action="Index">Pedidos</a>
+                    <a class="nav-link" asp-area="Admin" asp-controller="AdminImagens" asp-action="Index">Gerenciar Imagens</a>
+
+                    <div class="dropdown">
+                        <button class=" btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                            Gráfico de vendas
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGraficos" asp-action="VendasAnuais365">Vendas Anuais</a>
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGraficos" asp-action="VendasMensal" asp-route-dias="30">Vendas Mensais</a>
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGraficos" asp-action="VendasSemanal" asp-route-dias="7">Vendas Semanais</a>
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="AdminRelatorioVendas" asp-action="Index">Relatório de Vendas</a>
+
+                        </div>
+                    </div>
+                    @await Html.PartialAsync("_loginPartial")
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" color="white">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Mozzafiato - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@* @model FileManagerModel *@
+ @model FileManagerModel
+@{
+    ViewBag.Title = "Arquivos";
+}
+@* @if (Model.Files != null) *@
+@if (Model.Files != null)
+{
+@*  <h3> Imagens: </h3>
+    <div class="flex-column"> </div>
+    var caminho = Model.PathImagensProdutos;
+    <div class="row"></div>
+    <hr /> *@
+    var caminho = Model.PathImagensProdutos;
+    <div class="row">
+        @foreach (FileInfo file in Model.Files)
+        {
+            <div class="column">
+                <img src="~/@caminho/@file.Name" width="125" height="125" title="@file.Name" asp-append-version="true">
+                @* <div style="padding:10px;text-align:left"> *@
+                <div style="padding:10px;text-align:left">
+                    @* po, isso aq eh sacanagem, antes n pegava a @Url.Action e dps q funcionou magicamente  *@
+        @*             <a href="@Url.Action("Deletefile", "AdminImagens", new {filename=file.Name})>"></ a > *@
+                    <a href="@Url.Action("Deletefile","AdminImagens",new { filename=file.Name})">Deletar</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+@if (ViewData["Erro"] != null)
+{
+    <img src="~/images/mensagem-de-erro.png" width="150" height="150" />
+    <h4>@ViewData["Erro"]</h4>
+}
+<div class="clearfix"></div>
+<hr />
+
+<div class="form-group">
+    <a class="btn btn-outline-info" asp-controller="AdminImagens" asp-action="Index">Retornar</a>
+</div>

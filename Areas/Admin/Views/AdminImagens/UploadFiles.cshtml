@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "UploadFiles";
+}
+<img src="~/imgs/upload-na-nuvem.png" width="70" width="50" />
+
+<hr />
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        @if (ViewData["Erro"] != null)
+        {
+            <img src="img" />
+            <h4> @ViewData </h4>
+
+        }
+
+    </div>
+
+    <div class="container">
+        @if (ViewData["Resultado"] != null)
+        {
+            <h4>@ViewData["Resultado"]</h4>
+            <hr />
+            @if (ViewBag.Arquivos != null)
+            {
+                //"viewbag eh um objeto dinâmico que permite armazenar os dados em tempo de execução sem previamente definir suas propriedades" - GPT, chat.
+                @foreach (string arquivo in ViewBag.Arquivos)
+                {
+                    <li> @arquivo </li>
+                }
+
+        }
+
+        }
+
+    </div>
+
+</div>

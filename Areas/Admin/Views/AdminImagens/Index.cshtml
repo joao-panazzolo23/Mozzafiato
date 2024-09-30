@@ -1,0 +1,36 @@
+﻿<table border="0" width="100%">
+
+    <img src="~/imgs/file-upload.png"/> 
+    <tr>
+        <td>
+            <form method="post" enctype="multipart/form-data" asp-controller="AdminImagens" asp-action="UploadFiles">
+@*                 <img src="~/imgs/upload/"/> *@
+                <img src="~/imgs/cart.png" />
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p><b>Selecione um ou mais arquivos para enviar</b></p>
+                        <p> Arquivos com o mesmo nome serão sobreescritos.</p>
+                        
+                         <input type="file" name="files" multiple class="button btn-outline-danger" /> 
+                    </div>
+                </div>
+            </form>
+        </td>
+        <form method="post" enctype="multipart/form-data" asp-controller="AdminImagens">
+            
+        <img src="~/imgs/visualizar.png"/>
+        <div class="from-group">
+            <div class="col-md-10">
+                <p> <strong> Visualizar imagens na pasta do servidor: </strong></p>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group"></div>
+          
+            <div class="col-md-10">
+                
+                <input type="submit" value="Visualizar Arquivos no servidor" class="button btn-outline-warning" />
+            </div>
+        </form>
+    </tr>
+</table>

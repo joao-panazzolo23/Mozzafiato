@@ -1,0 +1,15 @@
+﻿@model HomeViewModel
+<h1> Piano, piano, se va lontano </h1>
+<partial name="_Carrosel"/> 
+
+<h2> As mais pedidas da semana! </h2>
+<h4> Mate a sua fome.</h4>
+
+<div class="row">
+    @foreach (var lanche in Model.LanchesPreferidos)
+    {
+       <partial name="_LanchesResumo" for="@lanche"/>
+    }
+
+
+</div>

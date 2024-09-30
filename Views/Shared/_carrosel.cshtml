@@ -1,0 +1,69 @@
+﻿<style>
+    .carousel {
+        width: 70%;
+        height: 0%;
+        margin: 0 auto;
+    }
+    .carousel-inner img { 
+        width: 100%;
+        height: 1%;
+        /* object-fit: cover; */
+    }
+    div {
+        text-align: center;
+    }
+    .carousel-indicators [data-bs-target] {
+        background-color: #6c1d1c;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5); 
+        border-radius: 50%;
+    }
+
+    .carousel-control-prev-icon {
+        background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path d="M11.293 3.293a1 1 0 0 1 0 1.414L6.414 9l4.879 4.879a1 1 0 0 1-1.414 1.414l-5.5-5.5a1 1 0 0 1 0-1.414l5.5-5.5a1 1 0 0 1 1.414 0z"/></svg>');
+    }
+
+    .carousel-control-next-icon {
+        background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24"  fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path d="M4.707 3.293a1 1 0 0 1 1.414 0L10.586 8l-4.879 4.879a1 1 0 0 1-1.414-1.414L8.586 8 4.707 4.121a1 1 0 0 1 0-1.414z"/></svg>');
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+    }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner rounded-9">
+        <div class="carousel-item active">
+            <img src="imgs/carrosel1.jpg" alt="Feito de maneira totalmente artesanal." class="d-block">
+        </div>
+        <div class="carousel-item">
+            <img src="imgs/carrosel2.jpg" alt="Delicious handmade products." class="d-block">
+        </div>
+        <div class="carousel-item">
+            <img src="imgs/carrosel3.jpg" alt="Feito de maneira totalmente artesanal." class="d-block">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mozzafiato</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Mozzafiato.styles.css" asp-append-version="true" />
+    <style> 
+        body {
+            background-color: #ffffff;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #6c1d1c !important;
+            font-family: 'Malgun Gothic';
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem !important;
+            color: #f8f9fa !important;
+            font-family: Bahnschrift;
+        }
+
+        .nav-link {
+            color: #f8f9fa !important;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .nav-link:focus {
+            color: #C0C0C0 !important;
+            border-radius:1px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+            .nav-link:hover {
+                color: #ff007f !important;
+            }
+
+        .form-control { 
+            border-radius: 20px;
+            box-shadow: none;
+        }
+
+            .form-control:focus {
+                box-shadow: #C0C0C0 !important;
+                border-color: #C0C0C0 !important;
+            }
+
+        .footer {
+            color:darkred;
+            background-color: #f8f9fa;
+            color: #6c1d1c !important;
+            /* padding: 1rem; */
+            line-height: 1px;
+        }
+
+            .footer a {
+                color: #6c1d1c !important;
+                
+            }
+
+                .footer a:hover {
+                    color: #4a0f0d !important;
+                }
+
+        .btn-primary-custom {
+            background-color: none !important;
+            border-color: #007bff !important;
+        }
+
+            .btn-primary-custom:hover {
+                background-color: none !important;
+                border-color: #004085 !important;
+            }
+
+        .btn-secondary-custom {
+            background-color: none !important;
+            border-color: #6c1d1c !important;
+            color: #ffffff !important;
+        }
+
+            .btn-secondary-custom:hover {
+                background-color: none !important;
+                border-color: #4a0f0d !important;
+            }
+
+        .btn-danger-custom {
+            background-color: #808080;
+            border-color: #dc3545 !important;
+            color: #ffffff;
+        }
+
+            .btn-danger-custom:hover {
+                background-color: none !important;
+                border-color: #bd2130 !important;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md border-dark border-bottom">
+            <div class="container">
+                <div>  <img src="~/imgs/cortador-de-pizza.png" height="30" width="30" style="margin-right: 5px;" /></div>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" >
+                    Mozzafiato
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @await Component.InvokeAsync("CategoriaMenu")
+
+                <div class="navbar-collapse collapse d-md-inline-flex flex-md-row-reverse">
+     @*                @await Component.InvokeAsync("CarrinhoCompraResumo") *@
+
+                     <form class="form-inline my-2 my-md-0" asp-controller="Lanche" asp-action="Search" method="get">
+                        <input type="text" class="form-control" placeholder="Procurar Produto" name="searchString" value="@ViewData["searchString"]" />
+                    </form>
+
+                    <a class="nav-link" asp-area="" asp-controller="CarrinhoCompra" asp-action="Index">Cart</a>
+                    <a class="nav-link" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
+
+                    @await Html.PartialAsync("_loginPartial")
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index"> Admin </a>
+                    }
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Mozzafiato - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
